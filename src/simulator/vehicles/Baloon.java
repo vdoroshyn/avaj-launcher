@@ -1,7 +1,9 @@
-class Helicopter extends Aircraft implements Flyable {
+package src.simulator.vehicles;
+
+class Baloon extends Aircraft implements Flyable {
 	private WeatherTower weatherTower;
 
-	Helicopter(String name, Coordinates coordinates) {
+	Baloon(String name, Coordinates coordinates) {
 
 	}
 
@@ -10,6 +12,6 @@ class Helicopter extends Aircraft implements Flyable {
 	}
 
 	public void registerTower(WeatherTower weatherTower) {
-
+		
 	}
 }

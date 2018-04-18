@@ -1,3 +1,5 @@
+package src.simulator.vehicles;
+
 class JetPlane extends Aircraft implements Flyable {
 	private WeatherTower weatherTower;
 

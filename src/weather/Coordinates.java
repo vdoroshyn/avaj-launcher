@@ -1,3 +1,5 @@
+package src.weather;
+
 class Coordinates {
 	private int longitude;
 	private int latitude;
