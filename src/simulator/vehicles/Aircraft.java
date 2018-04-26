@@ -13,6 +13,6 @@ class Aircraft {
 	}
 
 	private long nextId() {
-		return this.++idCounter;
+		return ++(this.idCounter);
 	}
 }
