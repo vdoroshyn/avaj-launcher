@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+private static WeatherTower weatherTower = new WeatherTower();
+
 public class Simulator {
 
 	public static void main(String[] args) {
@@ -16,6 +18,7 @@ public class Simulator {
 			}
 
 			while ((line = reader.readLine()) != null) {
+
 				String type = line.split(" ")[0];
 				String name = line.split(" ")[1];
 				int longitude = Integer.parseInt(line.split(" ")[2]);

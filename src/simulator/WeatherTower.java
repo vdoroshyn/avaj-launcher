@@ -1,7 +1,7 @@
 package src.simulator;
 
-class WeatherTower {
-	public getWeather(Coordinates coordinates) {
+class WeatherTower extends Tower {
+	public String getWeather(Coordinates coordinates) {
 
 	}
 
