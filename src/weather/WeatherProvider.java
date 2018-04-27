@@ -1,6 +1,7 @@
 package src.weather;
 
 class WeatherProvider {
+	
 	private static WeatherProvider weatherProvider = null;
 	private static String[] weather = {"RAIN", "FOG", "SUN", "SNOW"};
 

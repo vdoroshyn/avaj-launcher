@@ -1,10 +1,14 @@
 package src.simulator;
 
+import java.util.ArrayList;
+import src.simulator.vehicles.Flyable;
+
 class Tower {
-	private ArrayList<Flyable> observers;
+
+	private ArrayList<Flyable> observers = new ArrayList<Flyable>();
 
 	public void register(Flyable flyable) {
-
+		
 	}
 
 	public void unregister(Flyable flyable) {
@@ -12,6 +16,6 @@ class Tower {
 	}
 
 	protected void conditionsChanged() {
-		
+		// System.out.println("ebalo");//TODO
 	}
 }

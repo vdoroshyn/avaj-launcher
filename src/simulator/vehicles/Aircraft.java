@@ -1,6 +1,7 @@
 package src.simulator.vehicles;
 
 class Aircraft {
+	
 	protected long id;
 	protected String name;
 	protected Coordinates coordinates;

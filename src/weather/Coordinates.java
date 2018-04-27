@@ -1,6 +1,6 @@
 package src.weather;
 
-class Coordinates {
+public class Coordinates {
 	private int longitude;
 	private int latitude;
 	private int height;

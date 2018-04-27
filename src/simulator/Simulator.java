@@ -3,10 +3,11 @@ package src.simulator;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
-private static WeatherTower weatherTower = new WeatherTower();
+import src.simulator.WeatherTower;
 
 public class Simulator {
+
+	private static WeatherTower weatherTower = new WeatherTower();
 
 	public static void main(String[] args) {
 		try {
@@ -18,14 +19,15 @@ public class Simulator {
 			}
 
 			while ((line = reader.readLine()) != null) {
-
-				String type = line.split(" ")[0];
-				String name = line.split(" ")[1];
-				int longitude = Integer.parseInt(line.split(" ")[2]);
-				int latitude = Integer.parseInt(line.split(" ")[3]);
-				int height = Integer.parseInt(line.split(" ")[4]);
+		Validator.validateLine(line);
+				// String type = line.split(" ")[0];
+				// String name = line.split(" ")[1];
+				// int longitude = Integer.parseInt(line.split(" ")[2]);
+				// int latitude = Integer.parseInt(line.split(" ")[3]);
+				// int height = Integer.parseInt(line.split(" ")[4]);
 				System.out.println(line);
 			}
+			// weatherTower.conditionsChanged();
 
 		} catch (IOException e) {
 			System.out.println("huy");
@@ -43,4 +45,6 @@ public class Simulator {
 3)  For each iteration weatherTower.changeWeather() is called.
 	changeWeather() -> conditionsChanged() -> iterate through the arraylist of observers ->
 	updateConditions() -> getWeather() -> getCurrentWeather()
+	log changes into the result file
+	unregister an observer if its height is 0
 */
