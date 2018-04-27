@@ -30,17 +30,17 @@ public class Simulator {
 		} catch (IOException e) {
 			System.out.println("huy");
 		}
-		// Aircraft cessna172 = new Aircraft();
 	}
 }
 
-// class Aircraft {
-// 	int passengers;
-// 	int cruiseSpeed;
-// 	double fuelCapacity;
-// 	double fuelBurnRate;
+/*
 
-// 	Aircraft() {
-// 		System.out.println("Aircraft is created");
-// 	}
-// }
+1)  Read the file and the number of iterations on the first line. 
+	If there is a problem with it, throw an exception
+2)  Read the rest of the file line by line validating each line.
+	Every valid line is created as a respective object in observers arraylist and registered.
+	Throw an exception in case something is wrong and put "" into the result file.
+3)  For each iteration weatherTower.changeWeather() is called.
+	changeWeather() -> conditionsChanged() -> iterate through the arraylist of observers ->
+	updateConditions() -> getWeather() -> getCurrentWeather()
+*/
