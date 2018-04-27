@@ -19,7 +19,7 @@ public class Simulator {
 			}
 
 			while ((line = reader.readLine()) != null) {
-		Validator.validateLine(line);
+				Validator.validateLine(line);
 				// String type = line.split(" ")[0];
 				// String name = line.split(" ")[1];
 				// int longitude = Integer.parseInt(line.split(" ")[2]);
