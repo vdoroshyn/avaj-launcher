@@ -3,7 +3,9 @@ package src.simulator;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.FileNotFoundException;
 import src.simulator.WeatherTower;
+import src.exceptions.TestException;
 
 public class Simulator {
 
@@ -16,6 +18,11 @@ public class Simulator {
 			if (line != null) {
 				int numberOfSimulations = Integer.parseInt(line.split(" ")[0]);
 				System.out.println(numberOfSimulations);
+				if (numberOfSimulations != 25) {
+					throw (new TestException("Invalid number of simulations"));
+				}
+			} else {
+				throw (new TestException("The file is empty"));
 			}
 
 			while ((line = reader.readLine()) != null) {
@@ -29,8 +36,14 @@ public class Simulator {
 			}
 			// weatherTower.conditionsChanged();
 
+		} catch (TestException e) {
+			System.out.println(e.getMessage());
+		} catch (FileNotFoundException e) {
+			System.out.println("Couldn't find the file " + args[0]);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("Are you tring to get a segmentation fault?");
 		} catch (IOException e) {
-			System.out.println("huy");
+			System.out.println("There was an error while reading the file " + args[0]);
 		}
 	}
 }
