@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import src.simulator.WeatherTower;
-import src.exceptions.TestException;
+import src.exceptions.ValidationException;
 
 public class Simulator {
 
@@ -18,25 +18,20 @@ public class Simulator {
 			if (line != null) {
 				int numberOfSimulations = Integer.parseInt(line.split(" ")[0]);
 				System.out.println(numberOfSimulations);
-				if (numberOfSimulations != 25) {
-					throw (new TestException("Invalid number of simulations"));
+				if (numberOfSimulations <= 0) {
+					throw (new ValidationException("Invalid number of simulations"));
 				}
 			} else {
-				throw (new TestException("The file is empty"));
+				throw (new ValidationException("The file is empty"));
 			}
 
 			while ((line = reader.readLine()) != null) {
 				Validator.validateLine(line);
-				// String type = line.split(" ")[0];
-				// String name = line.split(" ")[1];
-				// int longitude = Integer.parseInt(line.split(" ")[2]);
-				// int latitude = Integer.parseInt(line.split(" ")[3]);
-				// int height = Integer.parseInt(line.split(" ")[4]);
 				System.out.println(line);
 			}
 			// weatherTower.conditionsChanged();
 
-		} catch (TestException e) {
+		} catch (ValidationException e) {
 			System.out.println(e.getMessage());
 		} catch (FileNotFoundException e) {
 			System.out.println("Couldn't find the file " + args[0]);
@@ -44,7 +39,12 @@ public class Simulator {
 			System.out.println("Are you tring to get a segmentation fault?");
 		} catch (IOException e) {
 			System.out.println("There was an error while reading the file " + args[0]);
+		} catch (NumberFormatException e) {
+			System.out.println("An error with the number formatting: " + e.getMessage());
 		}
+	// 	} catch (Exception e) {
+	// 		System.out.println("Undefined exception");
+	// 	}
 	}
 }
 

@@ -1,12 +1,12 @@
 package src.exceptions;
 
-public class TestException extends Exception {
+public class ValidationException extends Exception {
 
 	// @Override
 	// public String getMessage() {
 	// 	return "testing the exception";
 	// }
-	public TestException(String message) {
+	public ValidationException(String message) {
 		super(message);
 	}
 }
