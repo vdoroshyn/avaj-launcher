@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import src.simulator.WeatherTower;
+import src.simulator.vehicles.AircraftFactory;
 import src.exceptions.ValidationException;
 
 public class Simulator {
@@ -26,7 +27,9 @@ public class Simulator {
 			}
 
 			while ((line = reader.readLine()) != null) {
-				Validator.validateLine(line);
+				String[] splitLine = line.split(" ");
+				Validator.validateLine(splitLine);
+				weatherTower.observers.add(AircraftFactory.newAircraft(splitLine[0], splitLine[1], Integer.parseInt(splitLine[2]), Integer.parseInt(splitLine[3]), Integer.parseInt(splitLine[4])));
 				System.out.println(line);
 			}
 			// weatherTower.conditionsChanged();

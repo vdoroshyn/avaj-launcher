@@ -1,4 +1,4 @@
-package src.weather;
+package src.simulator.vehicles;
 
 public class Coordinates {
 	private int longitude;

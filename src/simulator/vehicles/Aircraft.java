@@ -1,5 +1,7 @@
 package src.simulator.vehicles;
 
+import src.simulator.vehicles.Coordinates;
+
 class Aircraft {
 	
 	protected long id;
@@ -9,7 +11,7 @@ class Aircraft {
 
 	protected Aircraft(String name, Coordinates coordinates) {
 		this.name = name;
-		this.Coordinates = coordinates;
+		this.coordinates = coordinates;
 		this.id = this.nextId();
 	}
 

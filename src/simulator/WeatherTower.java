@@ -1,7 +1,7 @@
 package src.simulator;
 
 import src.simulator.Tower;
-import src.weather.Coordinates;
+import src.simulator.vehicles.Coordinates;
 
 public class WeatherTower extends Tower {
 

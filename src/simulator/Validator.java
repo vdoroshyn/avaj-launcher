@@ -3,8 +3,7 @@ package src.simulator;
 import src.exceptions.ValidationException;
 
 class Validator {
-	public static void validateLine(String line) throws ValidationException {
-		String[] splitLine = line.split(" ");
+	public static void validateLine(String[] splitLine) throws ValidationException {
 		validateNumberOfElementsInLine(splitLine);
 		validateType(splitLine[0]);
 		validateName(splitLine[1]);
@@ -15,7 +14,7 @@ class Validator {
 
 	private static void validateNumberOfElementsInLine(String[] splitLine) throws ValidationException {
 		if (splitLine.length != 5) {
-			throw (new ValidationException("Something is missing. Check the validity of your file."));
+			throw (new ValidationException("Something is not right. Check the validity of your file."));
 		}
 	}
 

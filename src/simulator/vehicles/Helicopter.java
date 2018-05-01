@@ -1,5 +1,7 @@
 package src.simulator.vehicles;
 
+import src.simulator.WeatherTower;
+
 class Helicopter extends Aircraft implements Flyable {
 	
 	private WeatherTower weatherTower;
