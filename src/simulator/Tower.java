@@ -16,6 +16,6 @@ class Tower {
 	}
 
 	protected void conditionsChanged() {
-		// System.out.println("ebalo");//TODO
+		//TODO
 	}
 }
