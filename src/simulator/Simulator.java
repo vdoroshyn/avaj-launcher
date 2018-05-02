@@ -5,8 +5,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import src.simulator.WeatherTower;
+import src.simulator.vehicles.Flyable;
 import src.simulator.vehicles.AircraftFactory;
 import src.exceptions.ValidationException;
+import src.exceptions.AircraftException;
 
 public class Simulator {
 
@@ -29,11 +31,12 @@ public class Simulator {
 			while ((line = reader.readLine()) != null) {
 				String[] splitLine = line.split(" ");
 				Validator.validateLine(splitLine);
-				weatherTower.observers.add(AircraftFactory.newAircraft(splitLine[0], splitLine[1], Integer.parseInt(splitLine[2]), Integer.parseInt(splitLine[3]), Integer.parseInt(splitLine[4])));
-				System.out.println(line);
+				Flyable flyable = AircraftFactory.newAircraft(splitLine[0], splitLine[1], Integer.parseInt(splitLine[2]), Integer.parseInt(splitLine[3]), Integer.parseInt(splitLine[4]));
+				flyable.registerTower(weatherTower);
+				// System.out.println(line);
 			}
-			// weatherTower.conditionsChanged();
 
+			// weatherTower.conditionsChanged();
 		} catch (ValidationException e) {
 			System.out.println(e.getMessage());
 		} catch (FileNotFoundException e) {
@@ -44,6 +47,8 @@ public class Simulator {
 			System.out.println("There was an error while reading the file " + args[0]);
 		} catch (NumberFormatException e) {
 			System.out.println("An error with the number formatting: " + e.getMessage());
+		} catch (AircraftException e) {
+			System.out.println(e.getMessage());
 		}
 	// 	} catch (Exception e) {
 	// 		System.out.println("Undefined exception");
