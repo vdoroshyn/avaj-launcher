@@ -11,7 +11,24 @@ class Helicopter extends Aircraft implements Flyable {
 	}
 
 	public void updateConditions() {
+		System.out.println("Heli update");
+		String weather = this.weatherTower.getWeather(coordinates);
+		System.out.println(weather);
+		int longitude = this.coordinates.getLongitude();
+		int latitude = this.coordinates.getLatitude();
+		int height = this.coordinates.getHeight();
 
+		if ("RAIN".equals(weather)) {
+			this.coordinates = new Coordinates(longitude + 5, latitude, height);
+		} else if ("FOG".equals(weather)) {
+			this.coordinates = new Coordinates(longitude + 1, latitude, height);
+		} else if ("SUN".equals(weather)) {
+			this.coordinates = new Coordinates(longitude + 10, latitude, height + 2);
+		} else if ("SNOW".equals(weather)) {
+			this.coordinates = new Coordinates(longitude, latitude, height - 12);
+		} else {
+			System.out.println("This condition is not supported in this program");
+		}
 	}
 
 	public void registerTower(WeatherTower weatherTower) {

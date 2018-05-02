@@ -36,7 +36,8 @@ public class Simulator {
 				// System.out.println(line);
 			}
 
-			// weatherTower.conditionsChanged();
+			weatherTower.changeWeather();
+
 		} catch (ValidationException e) {
 			System.out.println(e.getMessage());
 		} catch (FileNotFoundException e) {

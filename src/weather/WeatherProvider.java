@@ -1,6 +1,8 @@
 package src.weather;
 
-class WeatherProvider {
+import src.simulator.vehicles.Coordinates;
+
+public class WeatherProvider {
 	
 	private static WeatherProvider weatherProvider = null;
 	private static String[] weather = {"RAIN", "FOG", "SUN", "SNOW"};
@@ -8,14 +10,14 @@ class WeatherProvider {
 	private WeatherProvider() {}
 
 	public static WeatherProvider getProvider() {
-		if (this.weatherProvider == null) {
-			this.weatherProvider = new WeatherProvider();
+		if (weatherProvider == null) {
+			weatherProvider = new WeatherProvider();
 		}
-		return this.weatherProvider;
+		return weatherProvider;
 	}
 
 	public String getCurrentWeather(Coordinates coordinates) {
-		int randNumber = (coordinates.getLongitude() + coordinates.getLatitude() + coordintes.getHeight()) / 3;
+		int randNumber = (coordinates.getLongitude() + coordinates.getLatitude() + coordinates.getHeight()) / 3;
 		return weather[randNumber % 4];
 	}
 }
