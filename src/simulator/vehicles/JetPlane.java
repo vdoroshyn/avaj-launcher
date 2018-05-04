@@ -11,9 +11,7 @@ class JetPlane extends Aircraft implements Flyable {
 	}
 
 	public void updateConditions() {
-		System.out.println("Plane update");
 		String weather = this.weatherTower.getWeather(coordinates);
-		System.out.println(weather);
 		int longitude = this.coordinates.getLongitude();
 		int latitude = this.coordinates.getLatitude();
 		int height = this.coordinates.getHeight();
@@ -41,7 +39,9 @@ class JetPlane extends Aircraft implements Flyable {
 			*/
 			System.out.println("This condition is not supported in this program");
 		}
-		
+		/*
+		**The height is checked here whether the aircraft has to land
+		*/
 		if (this.coordinates.getHeight() <= 0) {
 			System.out.println("JetPlane#" + this.name + "(" + this.id + ") landing.");//TODO to file
 			this.weatherTower.unregister(this);

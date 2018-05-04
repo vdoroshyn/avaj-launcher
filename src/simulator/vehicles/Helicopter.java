@@ -11,9 +11,7 @@ class Helicopter extends Aircraft implements Flyable {
 	}
 
 	public void updateConditions() {
-		System.out.println("Heli update");
 		String weather = this.weatherTower.getWeather(coordinates);
-		System.out.println(weather);
 		int longitude = this.coordinates.getLongitude();
 		int latitude = this.coordinates.getLatitude();
 		int height = this.coordinates.getHeight();
