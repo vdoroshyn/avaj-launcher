@@ -35,9 +35,18 @@ class JetPlane extends Aircraft implements Flyable {
 			System.out.println("JetPlane#" + this.name + "(" + this.id + "): It is better to find a landing zone due to the snow");//TODO to file
 			this.coordinates = new Coordinates(longitude, latitude, height - 7);
 		} else {
+			/*
+			**exception would have been a better choice
+			**but the interface and classes should be done according to the UML
+			*/
 			System.out.println("This condition is not supported in this program");
 		}
-		//TODO unregister if height <= 0
+		
+		if (this.coordinates.getHeight() <= 0) {
+			System.out.println("JetPlane#" + this.name + "(" + this.id + ") landing.");//TODO to file
+			this.weatherTower.unregister(this);
+			System.out.println("Tower says: JetPlane#" + this.name + "(" + this.id + ") unregistered from weather tower.");//TODO to file
+		}
 	}
 
 	public void registerTower(WeatherTower weatherTower) {

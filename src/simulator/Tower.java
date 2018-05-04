@@ -5,7 +5,7 @@ import src.simulator.vehicles.Flyable;
 
 class Tower {
 
-	public ArrayList<Flyable> observers = new ArrayList<Flyable>();//TODO private
+	private ArrayList<Flyable> observers = new ArrayList<Flyable>();//TODO private
 
 	public void register(Flyable flyable) {
 		if (!this.observers.contains(flyable)) {
