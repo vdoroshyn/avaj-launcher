@@ -1,7 +1,6 @@
 package src.simulator.vehicles;
 
 import src.simulator.WeatherTower;
-// import src.weather.WeatherProvider;
 
 class Baloon extends Aircraft implements Flyable {
 	

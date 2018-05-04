@@ -2,6 +2,7 @@ package src.simulator;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import src.simulator.WeatherTower;
@@ -19,6 +20,7 @@ public class Simulator {
 			//initialising this field in case line == 0
 			int numberOfSimulations = 0;
 			BufferedReader reader = new BufferedReader(new FileReader(args[0]));
+			PrintWriter writer = null;
 			String line = reader.readLine();
 
 			if (line != null) {
@@ -48,7 +50,11 @@ public class Simulator {
 			for (int i = 0; i < numberOfSimulations && weatherTower.getSize() != 0; ++i) {
 				weatherTower.changeWeather();
 			}
-
+			writer = new PrintWriter("simulation.txt");
+			// for (int count = 1; count <= 10; count++) {
+			// 	writer.println("Line " + count);
+			// }
+			writer.close();
 		} catch (ValidationException e) {
 			System.out.println(e.getMessage());
 		} catch (FileNotFoundException e) {
