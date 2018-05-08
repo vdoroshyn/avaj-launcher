@@ -20,7 +20,7 @@ class Tower {
 	}
 
 	//This method is added to optimize the work of the program
-	public int getSize() {
+	public int getObserversSize() {
 		return this.observers.size();
 	}
 

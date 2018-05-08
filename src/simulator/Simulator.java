@@ -14,13 +14,13 @@ import src.exceptions.AircraftException;
 public class Simulator {
 
 	private static WeatherTower weatherTower = new WeatherTower();
-
+public static PrintWriter writer = null;
 	public static void main(String[] args) {
 		try {
 			//initialising this field in case line == 0
 			int numberOfSimulations = 0;
 			BufferedReader reader = new BufferedReader(new FileReader(args[0]));
-			PrintWriter writer = null;
+			
 			String line = reader.readLine();
 
 			if (line != null) {
@@ -32,7 +32,7 @@ public class Simulator {
 			} else {
 				throw (new ValidationException("The file is empty"));
 			}
-
+						writer = new PrintWriter("simulation.txt");
 			while ((line = reader.readLine()) != null) {
 				String[] splitLine = line.split(" ");
 				Validator.validateLine(splitLine);
@@ -47,10 +47,10 @@ public class Simulator {
 			**checking observers.size() in order to optimize the work of the program
 			**if the size is 0, there are no observers left and it can exit
 			*/
-			for (int i = 0; i < numberOfSimulations && weatherTower.getSize() != 0; ++i) {
+			for (int i = 0; i < numberOfSimulations && weatherTower.getObserversSize() != 0; ++i) {
 				weatherTower.changeWeather();
 			}
-			writer = new PrintWriter("simulation.txt");
+
 			// for (int count = 1; count <= 10; count++) {
 			// 	writer.println("Line " + count);
 			// }
