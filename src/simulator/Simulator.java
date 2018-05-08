@@ -2,7 +2,6 @@ package src.simulator;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-// import java.io.PrintWriter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import src.simulator.WeatherTower;
@@ -15,10 +14,10 @@ import src.utility.Writer;
 public class Simulator {
 
 	private static WeatherTower weatherTower = new WeatherTower();
-// public static PrintWriter writer = null;
+
 	public static void main(String[] args) {
 		try {
-			//initialising this field in case line == 0
+			//initializing this field in case line is equal to 0
 			int numberOfSimulations = 0;
 			BufferedReader reader = new BufferedReader(new FileReader(args[0]));
 			
@@ -32,7 +31,7 @@ public class Simulator {
 			} else {
 				throw (new ValidationException("The file is empty"));
 			}
-						// writer = new PrintWriter("simulation.txt");
+
 			Writer.getWriter();
 			while ((line = reader.readLine()) != null) {
 				String[] splitLine = line.split(" ");
@@ -51,13 +50,8 @@ public class Simulator {
 			for (int i = 0; i < numberOfSimulations && weatherTower.getObserversSize() != 0; ++i) {
 				weatherTower.changeWeather();
 			}
-
-			// for (int count = 1; count <= 10; count++) {
-			// 	writer.println("Line " + count);
-			// }
 			Writer.closeWriter();
 			reader.close();
-			// writer.close();
 		} catch (ValidationException e) {
 			System.out.println(e.getMessage());
 		} catch (FileNotFoundException e) {
@@ -70,9 +64,8 @@ public class Simulator {
 			System.out.println("An error with the number formatting: " + e.getMessage());
 		} catch (AircraftException e) {
 			System.out.println(e.getMessage());
+		} catch (Exception e) {
+			System.out.println("Undefined exception");
 		}
-	// 	} catch (Exception e) {
-	// 		System.out.println("Undefined exception");
-	// 	}
 	}
 }
