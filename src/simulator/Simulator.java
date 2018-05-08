@@ -2,7 +2,7 @@ package src.simulator;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.PrintWriter;
+// import java.io.PrintWriter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import src.simulator.WeatherTower;
@@ -10,11 +10,12 @@ import src.simulator.vehicles.Flyable;
 import src.simulator.vehicles.AircraftFactory;
 import src.exceptions.ValidationException;
 import src.exceptions.AircraftException;
+import src.utility.Writer;
 
 public class Simulator {
 
 	private static WeatherTower weatherTower = new WeatherTower();
-public static PrintWriter writer = null;
+// public static PrintWriter writer = null;
 	public static void main(String[] args) {
 		try {
 			//initialising this field in case line == 0
@@ -25,14 +26,14 @@ public static PrintWriter writer = null;
 
 			if (line != null) {
 				numberOfSimulations = Integer.parseInt(line.split(" ")[0]);
-				System.out.println(numberOfSimulations);
 				if (numberOfSimulations <= 0) {
 					throw (new ValidationException("Invalid number of simulations"));
 				}
 			} else {
 				throw (new ValidationException("The file is empty"));
 			}
-						writer = new PrintWriter("simulation.txt");
+						// writer = new PrintWriter("simulation.txt");
+			Writer.getWriter();
 			while ((line = reader.readLine()) != null) {
 				String[] splitLine = line.split(" ");
 				Validator.validateLine(splitLine);
@@ -54,7 +55,9 @@ public static PrintWriter writer = null;
 			// for (int count = 1; count <= 10; count++) {
 			// 	writer.println("Line " + count);
 			// }
-			writer.close();
+			Writer.closeWriter();
+			reader.close();
+			// writer.close();
 		} catch (ValidationException e) {
 			System.out.println(e.getMessage());
 		} catch (FileNotFoundException e) {

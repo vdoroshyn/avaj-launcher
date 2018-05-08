@@ -1,6 +1,7 @@
 package src.simulator.vehicles;
 
 import src.simulator.WeatherTower;
+import src.utility.Writer;
 
 class JetPlane extends Aircraft implements Flyable {
 	
@@ -15,43 +16,52 @@ class JetPlane extends Aircraft implements Flyable {
 		int longitude = this.coordinates.getLongitude();
 		int latitude = this.coordinates.getLatitude();
 		int height = this.coordinates.getHeight();
-
-		if ("RAIN".equals(weather)) {
-			System.out.println("JetPlane#" + this.name + "(" + this.id + "): Rain? I do not mind to get wet");//TODO to file
-			this.coordinates = new Coordinates(longitude, latitude + 5, height);
-		} else if ("FOG".equals(weather)) {
-			System.out.println("JetPlane#" + this.name + "(" + this.id + "): Jeez. I don't see anything in this fog");//TODO to file
-			this.coordinates = new Coordinates(longitude, latitude + 1, height);
-		} else if ("SUN".equals(weather)) {
-			System.out.println("JetPlane#" + this.name + "(" + this.id + "): This sunny weather allows me to fly safely");//TODO to file
-			if (height > 98) {
-				this.coordinates = new Coordinates(longitude, latitude + 10, 100);
-			} else {
-				this.coordinates = new Coordinates(longitude, latitude + 10, height + 2);
-			}
-		} else if ("SNOW".equals(weather)) {
-			System.out.println("JetPlane#" + this.name + "(" + this.id + "): It is better to find a landing zone due to the snow");//TODO to file
-			this.coordinates = new Coordinates(longitude, latitude, height - 7);
-		} else {
-			/*
-			**exception would have been a better choice
-			**but the interface and classes should be done according to the UML
-			*/
-			System.out.println("This condition is not supported in this program");
+		
+		/*
+		**weather cannot be null in this version of the program, so I did not add another if conditional 
+		**the check should be here
+		*/
+		switch(weather) {
+			case "RAIN":
+				Writer.writeIntoAFile("JetPlane#" + this.name + "(" + this.id + "): Rain? I do not mind to get wet");
+				this.coordinates = new Coordinates(longitude, latitude + 5, height);
+				break;
+			case "FOG":
+				Writer.writeIntoAFile("JetPlane#" + this.name + "(" + this.id + "): Jeez. I don't see anything in this fog");
+				this.coordinates = new Coordinates(longitude, latitude + 1, height);
+				break;
+			case "SUN":
+				Writer.writeIntoAFile("JetPlane#" + this.name + "(" + this.id + "): This sunny weather allows me to fly safely");
+				if (height > 98) {
+					this.coordinates = new Coordinates(longitude, latitude + 10, 100);
+				} else {
+					this.coordinates = new Coordinates(longitude, latitude + 10, height + 2);
+				}
+				break;
+			case "SNOW":
+				Writer.writeIntoAFile("JetPlane#" + this.name + "(" + this.id + "): It is better to find a landing zone due to the snow");
+				this.coordinates = new Coordinates(longitude, latitude, height - 7);
+				break;
+			default:
+				/*
+				**exception would have been a better choice
+				**but the interface and classes should be done according to the UML
+				*/
+				System.out.println("This condition is not supported in this program");
 		}
 		/*
 		**The height is checked here whether the aircraft has to land
 		*/
 		if (this.coordinates.getHeight() <= 0) {
-			System.out.println("JetPlane#" + this.name + "(" + this.id + ") landing.");//TODO to file
+			Writer.writeIntoAFile("JetPlane#" + this.name + "(" + this.id + ") landing.");
 			this.weatherTower.unregister(this);
-			System.out.println("Tower says: JetPlane#" + this.name + "(" + this.id + ") unregistered from weather tower.");//TODO to file
+			Writer.writeIntoAFile("Tower says: JetPlane#" + this.name + "(" + this.id + ") unregistered from weather tower.");
 		}
 	}
 
 	public void registerTower(WeatherTower weatherTower) {
 		this.weatherTower = weatherTower;
 		this.weatherTower.register(this);
-		System.out.println("Tower says: JetPlane#" + this.name + "(" + this.id + ") registered to weather tower.");//TODO to file
+		Writer.writeIntoAFile("Tower says: JetPlane#" + this.name + "(" + this.id + ") registered to weather tower.");
 	}
 }
