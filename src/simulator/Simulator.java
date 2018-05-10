@@ -14,12 +14,13 @@ import src.utility.Writer;
 public class Simulator {
 
 	private static WeatherTower weatherTower = new WeatherTower();
+	private static BufferedReader reader = null;
 
 	public static void main(String[] args) {
 		try {
 			//initializing this field in case line is equal to 0
 			int numberOfSimulations = 0;
-			BufferedReader reader = new BufferedReader(new FileReader(args[0]));
+			reader = new BufferedReader(new FileReader(args[0]));
 			
 			String line = reader.readLine();
 
@@ -50,8 +51,7 @@ public class Simulator {
 			for (int i = 0; i < numberOfSimulations && weatherTower.getObserversSize() != 0; ++i) {
 				weatherTower.changeWeather();
 			}
-			Writer.closeWriter();
-			reader.close();
+
 		} catch (ValidationException e) {
 			System.out.println(e.getMessage());
 		} catch (FileNotFoundException e) {
@@ -66,6 +66,14 @@ public class Simulator {
 			System.out.println(e.getMessage());
 		} catch (Exception e) {
 			System.out.println("Undefined exception");
+		} finally {
+			try {
+				reader.close();
+				Writer.closeWriter();
+			}
+			catch (IOException e) {
+				System.out.println("An error with close: " + e.getMessage());
+			}
 		}
 	}
 }
