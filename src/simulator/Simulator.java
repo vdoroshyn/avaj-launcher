@@ -64,7 +64,7 @@ public class Simulator {
 			System.out.println("An error with the number formatting: " + e.getMessage());
 		} catch (AircraftException e) {
 			System.out.println(e.getMessage());
-		} catch (Exception e) {
+		} catch (Throwable e) {
 			System.out.println("Undefined exception");
 		} finally {
 			try {
@@ -72,8 +72,7 @@ public class Simulator {
 					reader.close();
 				}
 				Writer.closeWriter();
-			}
-			catch (IOException e) {
+			} catch (IOException e) {
 				System.out.println("An error with close: " + e.getMessage());
 			}
 		}
