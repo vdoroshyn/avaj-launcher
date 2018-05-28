@@ -68,7 +68,9 @@ public class Simulator {
 			System.out.println("Undefined exception");
 		} finally {
 			try {
-				reader.close();
+				if (reader != null) {
+					reader.close();
+				}
 				Writer.closeWriter();
 			}
 			catch (IOException e) {
